@@ -1,0 +1,28 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+    - ~/.npm
+node_js:
+  - 12
+
+git:
+  depth: 3
+script:
+  - yarn test
+
+notificationes:
+  slack: deploy-testespacio:bTcOBlbblWVzFmzssQG7NQM0
+  # email:
+  #     recipientes:
+  on_sucess: always
+  on_failure: always
+
+deploy:
+  provide: heroku
+  skip-clean: true
+  keep-history: true
+  api_key: b657f829-8ec1-4951-86fe-e1260b9c3053  #Esta se obtiene se la página de heroku en settings
+  app: onedrako-platzi-store-backend
+  on:
+    repo: onedrako/platzi-store-backend
